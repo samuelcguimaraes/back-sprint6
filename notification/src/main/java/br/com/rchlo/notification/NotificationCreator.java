@@ -1,6 +1,5 @@
-package br.com.rchlo.cards.infra.notifications;
+package br.com.rchlo.notification;
 
-import br.com.rchlo.cards.domain.transactions.Transaction;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -13,14 +12,14 @@ import java.util.Map;
 
 @Service
 public class NotificationCreator {
-
+    
     private final Configuration freemarker;
-
+    
     public NotificationCreator(Configuration freemarker) {
         this.freemarker = freemarker;
     }
-
-    public String createFor(Transaction transaction) {
+    
+    public String createFor(ConfirmedTransactionEvent transaction) {
         try {
             Template template = freemarker.getTemplate("expense-notification.ftl");
             Map<String, Object> data = new HashMap<>();
