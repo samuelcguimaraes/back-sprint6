@@ -2,10 +2,7 @@ package br.com.rchlo.cards.application.transactions;
 
 import br.com.rchlo.cards.domain.cards.Card;
 import br.com.rchlo.cards.domain.cards.CardBuilder;
-import br.com.rchlo.cards.domain.cards.Customer;
 import br.com.rchlo.cards.domain.transactions.Transaction;
-import br.com.rchlo.cards.infra.email.EmailSender;
-import br.com.rchlo.cards.infra.notifications.NotificationCreator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -46,7 +43,7 @@ class TransactionCancelationTest {
 
     @Test
     void shouldThrowWhenTransactionAlreadyCanceled() {
-        Card card = new CardBuilder().build();;
+        Card card = new CardBuilder().build();
         Transaction transaction = new Transaction(new BigDecimal("500"), "Fuzzy Cardigan", card);
         transaction.cancel();
 
